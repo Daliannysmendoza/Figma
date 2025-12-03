@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Web Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f0f0f0;
+        }
+        .login-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        input {
+            display: block;
+            width: 250px;
+            padding: 10px;
+            margin: 10px auto;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .msg {
+            margin-top: 10px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>Login</h2>
+        <input type="text" id="usuario" placeholder="Usuário">
+        <input type="password" id="senha" placeholder="Senha">
+        <button onclick="fazerLogin()">Entrar</button>
+        <div class="msg" id="mensagem"></div>
+    </div>
+
+    <script>
+        function fazerLogin() {
+            let usuario = document.getElementById("usuario").value;
+            let senha = document.getElementById("senha").value;
+            let mensagem = document.getElementById("mensagem");
+
+            mensagem.style.color = "red";
+
+            // Campos vazios
+            if(usuario === "" || senha === "") {
+                mensagem.innerHTML = "Preencha os campos obrigatórios";
+                return;
+            }
+
+            // Credenciais válidas
+            if(usuario === "admin" && senha === "123") {
+                mensagem.style.color = "green";
+                mensagem.innerHTML = "Login realizado! Redirecionando...";
+
+                // Redirecionar para la Web Gallery
+                setTimeout(() => {
+                    window.location.href = "galeria.html";
+                }, 1200); // 1.2 segundos antes de redirecionar
+            } else {
+                mensagem.innerHTML = "Credenciais inválidas";
+            }
+        }
+    </script>
+</body>
+</html>
